@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New person</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+    <label for="username">Enter name: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div style="color:red" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name error</div>
+    <br><br/>
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age error</div>
+    <br><br/>
+    <label for="email">Enter email: </label>
+    <input type="text" th:field="*{email}" id="email"/>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+    <br><br/>
+    <label for="password">Enter password: </label>
+    <input type="text" th:field="*{password}" id="password"/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error</div>
+    <br><br/>
+    <label>
+        <input type="checkbox" name="roleAdmin" th:value="ADMIN" th:text="Admin">
+    </label>
+    <label>
+        <input type="checkbox" name="roleUser" th:value="USER" th:text="User">
+    </label>
+    <br><br/>
+    <input type="submit" value="Create!">
+</form>
+
+<div class="add-user-link">
+    <h2 style="text-align: center"><a href="/logout">Logout</a></h2>
+</div>
+
+</body>
+</html>
